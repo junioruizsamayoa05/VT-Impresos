@@ -1,0 +1,1879 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VT Impresos - Servicios de Impresión Profesional en Alta Verapaz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #00bcd4 0%, #e91e63 25%, #ffeb3b 50%, #212121 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 100% 25%; }
+            50% { background-position: 0% 75%; }
+            75% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .hero-gradient::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: heroFloat 15s ease-in-out infinite;
+        }
+        
+        @keyframes heroFloat {
+            0%, 100% { transform: translate(-10%, -10%) rotate(0deg); }
+            50% { transform: translate(10%, 10%) rotate(180deg); }
+        }
+        
+        .service-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideInUp 0.6s ease-out forwards;
+        }
+        
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+        .service-card:nth-child(3) { animation-delay: 0.3s; }
+        .service-card:nth-child(4) { animation-delay: 0.4s; }
+        .service-card:nth-child(5) { animation-delay: 0.5s; }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        @keyframes slideInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fadeInDown {
+            animation: fadeInDown 0.8s ease-out;
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background: linear-gradient(90deg, #00bcd4, #e91e63);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .hero-text {
+            animation: heroSlideIn 1s ease-out;
+        }
+        
+        @keyframes heroSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .btn-hover {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-hover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-hover:hover::before {
+            left: 100%;
+        }
+        
+        .section-title {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: titleReveal 0.8s ease-out forwards;
+        }
+        
+        @keyframes titleReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .carousel-container {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+        
+        .carousel-slide {
+            min-height: 300px;
+        }
+        
+        .process-step {
+            opacity: 0;
+            transform: scale(0.8);
+            animation: scaleIn 0.6s ease-out forwards;
+        }
+        
+        .process-step:nth-child(1) { animation-delay: 0.1s; }
+        .process-step:nth-child(2) { animation-delay: 0.3s; }
+        .process-step:nth-child(3) { animation-delay: 0.5s; }
+        .process-step:nth-child(4) { animation-delay: 0.7s; }
+        
+        @keyframes scaleIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .contact-form {
+            background: linear-gradient(135deg, #00bcd4 0%, #e91e63 50%, #ffeb3b 75%, #212121 100%);
+        }
+        
+        .portfolio-item {
+            opacity: 0;
+            transform: scale(0.9);
+            animation: portfolioReveal 0.6s ease-out forwards;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .portfolio-item:nth-child(1) { animation-delay: 0.1s; }
+        .portfolio-item:nth-child(2) { animation-delay: 0.2s; }
+        .portfolio-item:nth-child(3) { animation-delay: 0.3s; }
+        .portfolio-item:nth-child(4) { animation-delay: 0.4s; }
+        .portfolio-item:nth-child(5) { animation-delay: 0.5s; }
+        .portfolio-item:nth-child(6) { animation-delay: 0.6s; }
+        
+        @keyframes portfolioReveal {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+        
+        .portfolio-overlay {
+            background: linear-gradient(135deg, rgba(0, 188, 212, 0.9) 0%, rgba(233, 30, 99, 0.9) 100%);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        
+        .filter-btn {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .filter-btn.active {
+            background: linear-gradient(135deg, #00bcd4, #e91e63);
+            color: white;
+        }
+        
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .filter-btn:hover::before {
+            left: 100%;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            animation: modalFadeIn 0.3s ease-out;
+        }
+        
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        @keyframes modalFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            max-width: 90%;
+            max-height: 90%;
+            overflow-y: auto;
+            position: relative;
+            animation: modalSlideIn 0.3s ease-out;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+        
+        @keyframes modalSlideIn {
+            from { 
+                opacity: 0;
+                transform: scale(0.8) translateY(50px);
+            }
+            to { 
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.1);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        
+        .close-modal:hover {
+            background: rgba(0, 0, 0, 0.2);
+            transform: scale(1.1);
+        }
+        
+        .buy-btn {
+            background: linear-gradient(135deg, #00bcd4, #e91e63);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .buy-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .buy-btn:hover::before {
+            left: 100%;
+        }
+        
+        .buy-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 188, 212, 0.3);
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-4">
+                    <img src="Logo.png" alt="VT Impresos Logo" class="h-20 w-auto rounded-full" >
+                    <h1 class="text-2xl font-bold text-gray-800 hover:text-cyan-500 transition-colors duration-300">VT Impresos</h1>
+                </div>
+                <div class="hidden md:flex gap4">
+                    <a href="#inicio" class="nav-link text-gray-700 hover:text-cyan-500 transition duration-300">Inicio</a>
+                    <a href="#servicios" class="nav-link text-gray-700 hover:text-pink-600 transition duration-300">Servicios</a>
+                    <a href="#portafolio" class="nav-link text-gray-700 hover:text-yellow-500 transition duration-300">Portafolio</a>
+                    <a href="#proceso" class="nav-link text-gray-700 hover:text-yellow-500 transition duration-300">Proceso</a>
+                    <a href="#contacto" class="nav-link text-gray-700 hover:text-gray-800 transition duration-300">Contacto</a>
+                </div>
+                <button class="md:hidden text-gray-700" onclick="toggleMenu()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
+                <a href="#inicio" class="block text-gray-700 hover:text-cyan-500 py-2">Inicio</a>
+                <a href="#servicios" class="block text-gray-700 hover:text-pink-600 py-2">Servicios</a>
+                <a href="#portafolio" class="block text-gray-700 hover:text-yellow-500 py-2">Portafolio</a>
+                <a href="#proceso" class="block text-gray-700 hover:text-yellow-500 py-2">Proceso</a>
+                <a href="#contacto" class="block text-gray-700 hover:text-gray-800 py-2">Contacto</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-gradient text-white py-20 relative">
+        <div class="container mx-auto px-6 text-center hero-text relative z-10">
+            <h2 class="text-5xl font-bold mb-6">Impresión Profesional en Alta Verapaz</h2>
+            <p class="text-xl mb-8 max-w-3xl mx-auto opacity-90">Servicios de impresión digital, diseño gráfico y acompañamiento personalizado en San Pedro Carchá. Calidad profesional para tu negocio.</p>
+            <div class="space-x-4">
+                <button onclick="scrollToSection('servicios')" class="btn-hover bg-cyan-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-cyan-600 transition duration-300">Ver Servicios</button>
+                <button onclick="scrollToSection('contacto')" class="btn-hover border-2 border-yellow-400 bg-yellow-400 text-gray-800 px-8 py-3 rounded-lg font-semibold hover:bg-yellow-500 hover:border-yellow-500 transition duration-300">Solicitar Cotización</button>
+            </div>
+        </div>
+        
+        <!-- Decorative elements -->
+        <div class="absolute top-20 left-10 opacity-20 floating">
+            <svg class="w-24 h-24 text-white" viewBox="0 0 100 100" fill="currentColor">
+                <rect x="20" y="15" width="60" height="70" rx="5" fill="currentColor"/>
+                <rect x="25" y="20" width="50" height="60" rx="3" fill="rgba(0,0,0,0.3)"/>
+                <rect x="30" y="25" width="40" height="4" fill="rgba(255,255,255,0.8)"/>
+                <rect x="30" y="32" width="35" height="2" fill="rgba(255,255,255,0.6)"/>
+                <rect x="30" y="37" width="40" height="2" fill="rgba(255,255,255,0.6)"/>
+            </svg>
+        </div>
+        
+        <div class="absolute bottom-20 right-20 opacity-15 floating" style="animation delay 2s;">
+            <svg class="w-32 h-32 text-white" viewBox="0 0 100 100" fill="currentColor">
+                <rect x="20" y="30" width="60" height="40" rx="4" fill="currentColor"/>
+                <rect x="25" y="35" width="50" height="30" rx="3" fill="rgba(0,0,0,0.3)"/>
+                <rect x="30" y="40" width="40" height="3" fill="rgba(255,255,255,0.8)"/>
+                <rect x="30" y="47" width="25" height="2" fill="rgba(255,255,255,0.6)"/>
+                <rect x="30" y="52" width="30" height="2" fill="rgba(255,255,255,0.6)"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Image Carousel Section -->
+    <section class="py-16 carousel-container">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h3 class="section-title text-4xl font-bold text-gray-800 mb-4">Nuestros Trabajos</h3>
+                <p class="text-gray-600 max-w-2xl mx-auto">Conoce algunos ejemplos de nuestros proyectos más recientes</p>
+            </div>
+            
+            <div class="relative max-w-4xl mx-auto">
+                <div class="carousel-slide bg-white rounded-2xl shadow-xl overflow-hidden" id="carousel">
+                    <!-- Slide 1 -->
+                    <div class="carousel-item active grid md:grid-cols-2 gap-8 p-8 items-center min-h-[300px]">
+                        <div class="bg-gradient-to-br from-cyan-500 to-cyan-600 p-8 rounded-xl flex items-center justify-center">
+                            <div class="bg-white rounded-lg p-6 shadow-xl transform rotate-3">
+                                <div class="text-cyan-600 font-bold text-lg mb-2">Dr. María González</div>
+                                <div class="text-gray-600 text-sm mb-3">Médico Especialista</div>
+                                <div class="text-xs text-gray-500">
+                                    <div>📞 5949 6565</div>
+                                    <div>📧 maria@clinica.com</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-2xl font-bold text-gray-800 mb-4">Tarjetas Profesionales</h4>
+                            <p class="text-gray-600 mb-4">Diseños elegantes para médicos y profesionales de la salud con acabados de alta calidad.</p>
+                            <ul class="text-sm text-gray-500 space-y-2">
+                                <li>• Papel couché de 300g</li>
+                                <li>• Laminado mate o brillante</li>
+                                <li>• Diseño personalizado incluido</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 2 -->
+                    <div class="carousel-item grid md:grid-cols-2 gap-8 p-8 items-center min-h-[300px]">
+                        <div class="bg-gradient-to-br from-pink-500 to-pink-600 p-6 rounded-xl">
+                            <div class="bg-white rounded-lg p-4 shadow-lg">
+                                <div class="text-pink-600 font-bold text-lg mb-2">¡Gran Apertura!</div>
+                                <div class="text-gray-700 text-sm mb-3">Restaurante El Sabor</div>
+                                <div class="bg-yellow-400 text-gray-800 text-xs px-2 py-1 rounded inline-block mb-2">50% DESC</div>
+                                <div class="text-xs text-gray-600">
+                                    <div>📍 San Pedro Carchá</div>
+                                    <div>🕒 Lun - Dom 11am-10pm</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-2xl font-bold text-gray-800 mb-4">Folletos Promocionales</h4>
+                            <p class="text-gray-600 mb-4">Material publicitario atractivo para restaurantes y negocios locales.</p>
+                            <ul class="text-sm text-gray-500 space-y-2">
+                                <li>• Papel couché brillante 150g</li>
+                                <li>• Impresión a full color</li>
+                                <li>• Diseño personalizado incluido</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 3 -->
+                    <div class="carousel-item grid md:grid-cols-2 gap-8 p-8 items-center min-h-[300px]">
+                        <div class="bg-gradient-to-br from-yellow-500 to-yellow-600 p-8 rounded-xl flex items-center justify-center">
+                            <div class="bg-white rounded-lg p-6 shadow-xl transform -rotate-2 w-32 h-40">
+                                <div class="text-yellow-600 font-bold text-sm mb-2">Historia de Guatemala</div>
+                                <div class="text-gray-600 text-xs mb-2">Por: Prof. Carlos Méndez</div>
+                                <div class="bg-yellow-100 h-16 rounded mb-2"></div>
+                                <div class="text-xs text-gray-500">Editorial VT</div>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-2xl font-bold text-gray-800 mb-4">Impresión de Libros</h4>
+                            <p class="text-gray-600 mb-4">Libros académicos y manuales con encuadernación profesional.</p>
+                            <ul class="text-sm text-gray-500 space-y-2">
+                                <li>• Diferentes tipos de encuadernación</li>
+                                <li>• Tapa dura y blanda</li>
+                                <li>• Formatos personalizados</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Carousel Controls -->
+                <button onclick="previousSlide()" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-3 shadow-lg transition-all duration-300 z-10">
+                    <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+                <button onclick="nextSlide()" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-3 shadow-lg transition-all duration-300 z-10">
+                    <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+                
+                <!-- Carousel Indicators -->
+                <div class="flex justify-center mt-6 space-x-2">
+                    <button onclick="goToSlide(0)" class="carousel-indicator active w-3 h-3 rounded-full bg-cyan-500 transition-all duration-300"></button>
+                    <button onclick="goToSlide(1)" class="carousel-indicator w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300"></button>
+                    <button onclick="goToSlide(2)" class="carousel-indicator w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h3 class="section-title text-4xl font-bold text-gray-800 mb-4">Nuestros Servicios</h3>
+                <p class="text-gray-600 max-w-2xl mx-auto">Ofrecemos soluciones completas de impresión con acompañamiento personalizado durante todo el proceso.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                <div class="service-card bg-white rounded-xl shadow-lg p-8 border border-gray-100">
+                    <div class="text-cyan-500 mb-6">
+                        <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-3 text-gray-800">Impresión Digital</h4>
+                    <p class="text-gray-600 mb-4">Documentos, folletos y material promocional con tecnología de última generación.</p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li>• Alta calidad a color y blanco y negro</li>
+                        <li>• Diferentes tipos de papel</li>
+                        <li>• Tiempos de entrega rápidos</li>
+                    </ul>
+                </div>
+
+                <div class="service-card bg-white rounded-xl shadow-lg p-8 border border-gray-100">
+                    <div class="text-pink-600 mb-6">
+                        <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M19,5V19H5V5H19Z"/>
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-3 text-gray-800">Tarjetas Profesionales</h4>
+                    <p class="text-gray-600 mb-4">Tarjetas de visita y presentación con diseños únicos y acabados de calidad.</p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li>• Diseños personalizados</li>
+                        <li>• Diferentes materiales y acabados</li>
+                        <li>• Entrega rápida</li>
+                    </ul>
+                </div>
+
+                <div class="service-card bg-white rounded-xl shadow-lg p-8 border border-gray-100">
+                    <div class="text-yellow-500 mb-6">
+                        <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M11,16.5L6.5,12L7.91,10.59L11,13.67L16.59,8.09L18,9.5L11,16.5Z"/>
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-3 text-gray-800">Diseño Gráfico</h4>
+                    <p class="text-gray-600 mb-4">Creación de diseños profesionales adaptados a tus necesidades específicas.</p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li>• Logotipos y branding</li>
+                        <li>• Material publicitario</li>
+                        <li>• Revisiones incluidas</li>
+                    </ul>
+                </div>
+
+                <div class="service-card bg-white rounded-xl shadow-lg p-8 border border-gray-100">
+                    <div class="text-gray-800 mb-6">
+                        <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M13,9H18.5L13,3.5V9M6,2H14L20,8V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V4C4,2.89 4.89,2 6,2M15,18V16H6V18H15M18,14V12H6V14H18Z"/>
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-3 text-gray-800">Impresión de Libros</h4>
+                    <p class="text-gray-600 mb-4">Libros, manuales y documentos con encuadernación profesional.</p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li>• Diferentes tipos de encuadernación</li>
+                        <li>• Tapa dura y blanda</li>
+                        <li>• Formatos personalizados</li>
+                    </ul>
+                </div>
+
+                <div class="service-card bg-white rounded-xl shadow-lg p-8 border border-gray-100 md:col-span-2 lg:col-span-1">
+                    <div class="text-cyan-600 mb-6">
+                        <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12,2C13.1,2 14,2.9 14,4C14,5.1 13.1,6 12,6C10.9,6 10,5.1 10,4C10,2.9 10.9,2 12,2M21,9V7L15,1H5C3.89,1 3,1.89 3,3V21A2,2 0 0,0 5,23H19A2,2 0 0,0 21,21V9M19,9H14V4H5V21H19V9Z"/>
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-3 text-gray-800">Acompañamiento Personalizado</h4>
+                    <p class="text-gray-600 mb-4">Te guiamos en cada paso del proceso, desde la idea inicial hasta el producto final.</p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li>• Asesoría en diseño y materiales</li>
+                        <li>• Seguimiento del proyecto</li>
+                        <li>• Atención personalizada</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portafolio" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h3 class="section-title text-4xl font-bold text-gray-800 mb-4">Nuestro Portafolio</h3>
+                <p class="text-gray-600 max-w-2xl mx-auto">Conoce algunos de nuestros trabajos más destacados y la calidad que ofrecemos</p>
+            </div>
+            
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button onclick="filterPortfolio('all')" class="filter-btn active px-6 py-3 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition duration-300">
+                    Todos
+                </button>
+                <button onclick="filterPortfolio('tarjetas')" class="filter-btn px-6 py-3 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition duration-300">
+                    Tarjetas
+                </button>
+                <button onclick="filterPortfolio('folletos')" class="filter-btn px-6 py-3 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition duration-300">
+                    Folletos
+                </button>
+                <button onclick="filterPortfolio('libros')" class="filter-btn px-6 py-3 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition duration-300">
+                    Libros
+                </button>
+                <button onclick="filterPortfolio('branding')" class="filter-btn px-6 py-3 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition duration-300">
+                    Branding
+                </button>
+            </div>
+            
+            <!-- Portfolio Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolio-grid">
+                <!-- Tarjetas Profesionales -->
+                <div class="portfolio-item relative bg-white rounded-xl shadow-lg overflow-hidden group cursor-pointer" data-category="tarjetas" onclick="openModal('tarjetas-medicas')">
+                    <div class="aspect-w-16 aspect-h-12 bg-gradient-to-br from-cyan-500 to-cyan-600 p-8 flex items-center justify-center">
+                        <div class="bg-white rounded-lg p-6 shadow-xl transform rotate-3 group-hover:rotate-0 transition-transform duration-300">
+                            <div class="text-cyan-600 font-bold text-lg mb-2">Dr. María González</div>
+                            <div class="text-gray-600 text-sm mb-3">Médico Especialista</div>
+                            <div class="text-xs text-gray-500">
+                                <div>📞 5949 6565</div>
+                                <div>📧 maria@clinica.com</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-overlay absolute inset-0 flex items-center justify-center">
+                        <div class="text-center text-white">
+                            <h4 class="text-xl font-bold mb-2">Tarjetas Médicas</h4>
+                            <p class="text-sm opacity-90">Clic para ver detalles</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Folletos Promocionales -->
+                <div class="portfolio-item relative bg-white rounded-xl shadow-lg overflow-hidden group cursor-pointer" data-category="folletos" onclick="openModal('folleto-restaurante')">
+                    <div class="aspect-w-16 aspect-h-12 bg-gradient-to-br from-pink-500 to-pink-600 p-6">
+                        <div class="bg-white rounded-lg p-4 shadow-lg">
+                            <div class="text-pink-600 font-bold text-lg mb-2">¡Gran Apertura!</div>
+                            <div class="text-gray-700 text-sm mb-3">Restaurante El Sabor</div>
+                            <div class="bg-yellow-400 text-gray-800 text-xs px-2 py-1 rounded inline-block mb-2">50% DESC</div>
+                            <div class="text-xs text-gray-600">
+                                <div>📍 San Pedro Carchá</div>
+                                <div>🕒 Lun - Dom 11am-10pm</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-overlay absolute inset-0 flex items-center justify-center">
+                        <div class="text-center text-white">
+                            <h4 class="text-xl font-bold mb-2">Folleto Restaurante</h4>
+                            <p class="text-sm opacity-90">Clic para ver detalles</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Libro Académico -->
+                <div class="portfolio-item relative bg-white rounded-xl shadow-lg overflow-hidden group cursor-pointer" data-category="libros" onclick="openModal('libro-historia')">
+                    <div class="aspect-w-16 aspect-h-12 bg-gradient-to-br from-yellow-500 to-yellow-600 p-8 flex items-center justify-center">
+                        <div class="bg-white rounded-lg p-6 shadow-xl transform -rotate-2 group-hover:rotate-0 transition-transform duration-300 w-32 h-40">
+                            <div class="text-yellow-600 font-bold text-sm mb-2">Historia de Guatemala</div>
+                            <div class="text-gray-600 text-xs mb-2">Por: Prof. Carlos Méndez</div>
+                            <div class="bg-yellow-100 h-16 rounded mb-2"></div>
+                            <div class="text-xs text-gray-500">Editorial VT</div>
+                        </div>
+                    </div>
+                    <div class="portfolio-overlay absolute inset-0 flex items-center justify-center">
+                        <div class="text-center text-white">
+                            <h4 class="text-xl font-bold mb-2">Libro Académico</h4>
+                            <p class="text-sm opacity-90">Clic para comprar</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Branding Completo -->
+                <div class="portfolio-item relative bg-white rounded-xl shadow-lg overflow-hidden group cursor-pointer" data-category="branding" onclick="openModal('branding-cafe')">
+                    <div class="aspect-w-16 aspect-h-12 bg-gradient-to-br from-gray-700 to-gray-800 p-6 flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mb-4 mx-auto">
+                                <span class="text-gray-800 font-bold text-xl">CF</span>
+                            </div>
+                            <div class="text-white font-bold text-lg mb-2">Café Familiar</div>
+                            <div class="text-gray-300 text-sm">Identidad Visual Completa</div>
+                        </div>
+                    </div>
+                    <div class="portfolio-overlay absolute inset-0 flex items-center justify-center">
+                        <div class="text-center text-white">
+                            <h4 class="text-xl font-bold mb-2">Branding Café</h4>
+                            <p class="text-sm opacity-90">Clic para ver detalles</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tarjetas Corporativas -->
+                <div class="portfolio-item relative bg-white rounded-xl shadow-lg overflow-hidden group cursor-pointer" data-category="tarjetas" onclick="openModal('tarjetas-corporativas')">
+                    <div class="aspect-w-16 aspect-h-12 bg-gradient-to-br from-cyan-600 to-cyan-700 p-8 flex items-center justify-center">
+                        <div class="bg-gray-900 rounded-lg p-6 shadow-xl transform rotate-2 group-hover:rotate-0 transition-transform duration-300">
+                            <div class="text-cyan-400 font-bold text-lg mb-2">Ing. Roberto Paz</div>
+                            <div class="text-gray-300 text-sm mb-3">Construcciones RPC</div>
+                            <div class="text-xs text-gray-400">
+                                <div>📞 4455 7788</div>
+                                <div>🏗️ Proyectos Residenciales</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-overlay absolute inset-0 flex items-center justify-center">
+                        <div class="text-center text-white">
+                            <h4 class="text-xl font-bold mb-2">Tarjetas Corporativas</h4>
+                            <p class="text-sm opacity-90">Clic para ver detalles</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Manual Técnico -->
+                <div class="portfolio-item relative bg-white rounded-xl shadow-lg overflow-hidden group cursor-pointer" data-category="libros" onclick="openModal('manual-tecnico')">
+                    <div class="aspect-w-16 aspect-h-12 bg-gradient-to-br from-yellow-600 to-yellow-700 p-8 flex items-center justify-center">
+                        <div class="bg-white rounded-lg p-6 shadow-xl transform rotate-1 group-hover:rotate-0 transition-transform duration-300 w-32 h-40">
+                            <div class="text-yellow-600 font-bold text-sm mb-2">Manual de Procedimientos</div>
+                            <div class="text-gray-600 text-xs mb-2">Empresa XYZ</div>
+                            <div class="bg-yellow-100 h-12 rounded mb-2"></div>
+                            <div class="bg-gray-100 h-2 rounded mb-1"></div>
+                            <div class="bg-gray-100 h-2 rounded mb-1"></div>
+                            <div class="bg-gray-100 h-2 rounded w-3/4"></div>
+                        </div>
+                    </div>
+                    <div class="portfolio-overlay absolute inset-0 flex items-center justify-center">
+                        <div class="text-center text-white">
+                            <h4 class="text-xl font-bold mb-2">Manual Técnico</h4>
+                            <p class="text-sm opacity-90">Clic para comprar</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Call to Action -->
+            <div class="text-center mt-12">
+                <p class="text-gray-600 mb-6">¿Te gusta lo que ves? Trabajemos juntos en tu próximo proyecto</p>
+                <button onclick="scrollToSection('contacto')" class="bg-gradient-to-r from-cyan-500 to-pink-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-cyan-600 hover:to-pink-700 transition duration-300 shadow-lg">
+                    Solicitar Cotización
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="proceso" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h3 class="section-title text-4xl font-bold text-gray-800 mb-4">Nuestro Proceso</h3>
+                <p class="text-gray-600 max-w-2xl mx-auto">Te acompañamos en cada etapa para garantizar resultados excepcionales</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="process-step text-center">
+                    <div class="w-16 h-16 bg-cyan-500 rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto mb-4">1</div>
+                    <h4 class="text-lg font-semibold mb-2 text-gray-800">Consulta Inicial</h4>
+                    <p class="text-gray-600 text-sm">Conversamos sobre tus necesidades y objetivos del proyecto</p>
+                </div>
+                
+                <div class="process-step text-center">
+                    <div class="w-16 h-16 bg-pink-600 rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto mb-4">2</div>
+                    <h4 class="text-lg font-semibold mb-2 text-gray-800">Diseño y Propuesta</h4>
+                    <p class="text-gray-600 text-sm">Creamos el diseño y te presentamos opciones con cotización</p>
+                </div>
+                
+                <div class="process-step text-center">
+                    <div class="w-16 h-16 bg-yellow-500 rounded-full flex items-center justify-center text-gray-800 font-bold text-xl mx-auto mb-4">3</div>
+                    <h4 class="text-lg font-semibold mb-2 text-gray-800">Producción</h4>
+                    <p class="text-gray-600 text-sm">Imprimimos tu proyecto con la más alta calidad</p>
+                </div>
+                
+                <div class="process-step text-center">
+                    <div class="w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto mb-4">4</div>
+                    <h4 class="text-lg font-semibold mb-2 text-gray-800">Entrega</h4>
+                    <p class="text-gray-600 text-sm">Recibe tu producto terminado en tiempo y forma</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="py-16 contact-form relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h3 class="section-title text-4xl font-bold text-white mb-4">Contáctanos</h3>
+                <p class="text-white opacity-90 max-w-2xl mx-auto">¿Listo para tu próximo proyecto? Solicita tu cotización gratuita</p>
+            </div>
+            
+            <div class="max-w-6xl mx-auto">
+                <div class="grid lg:grid-cols-2 gap-12 items-start">
+                    <!-- Contact Info -->
+                    <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-8">
+                        <h4 class="text-2xl font-bold text-white mb-6">VT Impresos</h4>
+                        <div class="space-y-6 text-white">
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-white bg-opacity-20 p-3 rounded-full mt-1">
+                                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold">Dirección</h5>
+                                    <p class="opacity-90 text-sm leading-relaxed">Diagonal 2 8-63 Zona 2<br>Barrio San Pablo<br>San Pedro Carchá, Alta Verapaz<br>Guatemala</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center space-x-4">
+                                <div class="bg-white bg-opacity-20 p-3 rounded-full">
+                                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold">Celular</h5>
+                                    <p class="opacity-90">5949 6565</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center space-x-4">
+                                <div class="bg-white bg-opacity-20 p-3 rounded-full">
+                                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold">Email</h5>
+                                    <p class="opacity-90">verapaztelevision@gmail.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center space-x-4">
+                                <div class="bg-white bg-opacity-20 p-3 rounded-full">
+                                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold">Horarios</h5>
+                                    <p class="opacity-90">Lunes a Viernes<br>8:00 a.m. - 6:00 p.m.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Form -->
+                    <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-8">
+                        <h4 class="text-2xl font-bold text-white mb-6">Solicita tu Cotización</h4>
+                        <form onsubmit="handleContactSubmit(event)" class="space-y-4">
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <input type="text" id="contactNombre" placeholder="Tu nombre" required class="w-full px-4 py-3 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 transition-all duration-300">
+                                <input type="email" id="contactEmail" placeholder="Tu email" required class="w-full px-4 py-3 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 transition-all duration-300">
+                            </div>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <input type="tel" id="contactTelefono" placeholder="Tu teléfono" class="w-full px-4 py-3 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 transition-all duration-300">
+                                <select id="contactServicio" required class="w-full px-4 py-3 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 transition-all duration-300">
+                                    <option value="">Selecciona un servicio</option>
+                                    <option value="impresion-digital">Impresión Digital</option>
+                                    <option value="tarjetas">Tarjetas Profesionales</option>
+                                    <option value="diseno">Diseño Gráfico</option>
+                                    <option value="libros">Impresión de Libros</option>
+                                    <option value="acompañamiento">Acompañamiento Personalizado</option>
+                                </select>
+                            </div>
+                            <textarea id="contactMensaje" rows="4" placeholder="Cuéntanos sobre tu proyecto..." required class="w-full px-4 py-3 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 resize-none transition-all duration-300"></textarea>
+                            <button type="submit" class="w-full bg-white text-blue-600 py-4 rounded-lg font-semibold hover:bg-gray-100 transition duration-300 text-lg">
+                                Solicitar Cotización Gratuita
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modals -->
+    <div id="modal-tarjetas-medicas" class="modal">
+        <div class="modal-content w-full max-w-4xl mx-4">
+            <button class="close-modal" onclick="closeModal('tarjetas-medicas')">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <div class="p-8">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div class="bg-gradient-to-br from-cyan-500 to-cyan-600 p-8 rounded-xl flex items-center justify-center">
+                        <div class="bg-white rounded-lg p-8 shadow-xl max-w-sm">
+                            <div class="text-cyan-600 font-bold text-2xl mb-3">Dr. María González</div>
+                            <div class="text-gray-600 text-lg mb-4">Médico Especialista</div>
+                            <div class="text-sm text-gray-500 space-y-2">
+                                <div class="flex items-center"><span class="mr-2">📞</span> 5949 6565</div>
+                                <div class="flex items-center"><span class="mr-2">📧</span> maria@clinica.com</div>
+                                <div class="flex items-center"><span class="mr-2">📍</span> San Pedro Carchá</div>
+                                <div class="flex items-center"><span class="mr-2">🏥</span> Clínica Médica</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-bold text-gray-800 mb-4">Tarjetas Médicas Profesionales</h3>
+                        <p class="text-gray-600 mb-6">Diseño elegante y profesional para médicos y especialistas. Incluye información completa de contacto con acabados de alta calidad.</p>
+                        
+                        <div class="space-y-4 mb-6">
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-cyan-500 rounded-full mr-3"></div>
+                                <span class="text-gray-700">Papel couché de 300g</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-cyan-500 rounded-full mr-3"></div>
+                                <span class="text-gray-700">Laminado mate o brillante</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-cyan-500 rounded-full mr-3"></div>
+                                <span class="text-gray-700">Diseño personalizado incluido</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-cyan-500 rounded-full mr-3"></div>
+                                <span class="text-gray-700">Entrega en 3-5 días hábiles</span>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-4 rounded-lg mb-6">
+                            <div class="text-2xl font-bold text-gray-800 mb-2">Q. 150.00</div>
+                            <div class="text-sm text-gray-600">Por 500 tarjetas</div>
+                        </div>
+                        
+                        <button onclick="requestQuote('Tarjetas Médicas Profesionales')" class="w-full bg-cyan-500 text-white py-3 rounded-lg font-semibold hover:bg-cyan-600 transition duration-300">
+                            Solicitar Cotización
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-folleto-restaurante" class="modal">
+        <div class="modal-content w-full max-w-4xl mx-4">
+            <button class="close-modal" onclick="closeModal('folleto-restaurante')">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <div class="p-8">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div class="bg-gradient-to-br from-pink-500 to-pink-600 p-8 rounded-xl">
+                        <div class="bg-white rounded-lg p-6 shadow-lg max-w-sm mx-auto">
+                            <div class="text-pink-600 font-bold text-2xl mb-3">¡Gran Apertura!</div>
+                            <div class="text-gray-700 text-lg mb-4">Restaurante El Sabor</div>
+                            <div class="bg-yellow-400 text-gray-800 text-sm px-3 py-2 rounded inline-block mb-4 font-bold">50% DESCUENTO</div>
+                            <div class="text-sm text-gray-600 space-y-2">
+                                <div class="flex items-center"><span class="mr-2">📍</span> San Pedro Carchá</div>
+                                <div class="flex items-center"><span class="mr-2">🕒</span> Lun - Dom 11am-10pm</div>
+                                <div class="flex items-center"><span class="mr-2">📞</span> 5949 6565</div>
+                                <div class="flex items-center"><span class="mr-2">🍽️</span> Comida Tradicional</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-bold text-gray-800 mb-4">Folletos Promocionales</h3>
+                        <p class="text-gray-600 mb-6">Material promocional atractivo para restaurantes y negocios. Diseño llamativo que destaca ofertas especiales y información importante.</p>
+                        
+                        <div class="space-y-4 mb-6">
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-pink-600 rounded-full mr-3"></div>
+                                <span class="text-gray-700">Papel couché brillante 150g</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-pink-600 rounded-full mr-3"></div>
+                                <span class="text-gray-700">Impresión a full color</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-pink-600 rounded-full mr-3"></div>
+                                <span class="text-gray-700">Tamaño carta o media carta</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-pink-600 rounded-full mr-3"></div>
+                                <span class="text-gray-700">Diseño personalizado incluido</span>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-4 rounded-lg mb-6">
+                            <div class="text-2xl font-bold text-gray-800 mb-2">Q. 0.75</div>
+                            <div class="text-sm text-gray-600">Por folleto (mínimo 100 unidades)</div>
+                        </div>
+                        
+                        <button onclick="requestQuote('Folletos Promocionales')" class="w-full bg-pink-600 text-white py-3 rounded-lg font-semibold hover:bg-pink-700 transition duration-300">
+                            Solicitar Cotización
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-libro-historia" class="modal">
+        <div class="modal-content w-full max-w-6xl mx-4 max-h-[90vh] overflow-y-auto">
+            <button class="close-modal" onclick="closeModal('libro-historia')">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <div class="p-8">
+                <!-- Header Section -->
+                <div class="grid md:grid-cols-2 gap-8 items-center mb-8">
+                    <div class="bg-gradient-to-br from-yellow-500 to-yellow-600 p-8 rounded-xl flex items-center justify-center">
+                        <div class="bg-white rounded-lg p-8 shadow-xl w-48 h-64 flex flex-col">
+                            <div class="text-yellow-600 font-bold text-xl mb-3">Historia de Guatemala</div>
+                            <div class="text-gray-600 text-sm mb-4">Por: Prof. Carlos Méndez</div>
+                            <div class="bg-yellow-100 flex-1 rounded mb-4 flex items-center justify-center">
+                                <div class="text-yellow-600 text-4xl">📚</div>
+                            </div>
+                            <div class="text-xs text-gray-500">Editorial VT • 2024</div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-bold text-gray-800 mb-4">Historia de Guatemala</h3>
+                        <p class="text-gray-600 mb-6">Libro académico completo sobre la historia de Guatemala. Ideal para estudiantes universitarios y profesores. Incluye mapas, ilustraciones y cronología detallada.</p>
+                        
+                        <div class="space-y-4 mb-6">
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-yellow-500 rounded-full mr-3"></div>
+                                <span class="text-gray-700">320 páginas a full color</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-yellow-500 rounded-full mr-3"></div>
+                                <span class="text-gray-700">Encuadernación en tapa dura</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-yellow-500 rounded-full mr-3"></div>
+                                <span class="text-gray-700">Papel bond de alta calidad</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-yellow-500 rounded-full mr-3"></div>
+                                <span class="text-gray-700">Incluye mapas e ilustraciones</span>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-4 rounded-lg mb-6">
+                            <div class="text-2xl font-bold text-gray-800 mb-2">Q. 125.00</div>
+                            <div class="text-sm text-gray-600">Precio por libro</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Book Preview Section -->
+                <div class="bg-gray-50 rounded-xl p-6 mb-8">
+                    <h4 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                        <span class="mr-3">👁️</span> Vista Previa del Contenido
+                    </h4>
+                    
+                    <!-- Table of Contents -->
+                    <div class="bg-white rounded-lg p-6 mb-6 shadow-sm">
+                        <h5 class="text-lg font-semibold text-gray-800 mb-4">📋 Índice de Contenidos</h5>
+                        <div class="grid md:grid-cols-2 gap-4 text-sm">
+                            <div class="space-y-2">
+                                <div class="flex justify-between border-b border-gray-200 pb-1">
+                                    <span>Capítulo 1: Época Precolombina</span>
+                                    <span class="text-gray-500">p. 15</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-1">
+                                    <span>Capítulo 2: La Conquista Española</span>
+                                    <span class="text-gray-500">p. 45</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-1">
+                                    <span>Capítulo 3: Período Colonial</span>
+                                    <span class="text-gray-500">p. 78</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-1">
+                                    <span>Capítulo 4: Independencia</span>
+                                    <span class="text-gray-500">p. 125</span>
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="flex justify-between border-b border-gray-200 pb-1">
+                                    <span>Capítulo 5: República Liberal</span>
+                                    <span class="text-gray-500">p. 165</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-1">
+                                    <span>Capítulo 6: Revolución de 1944</span>
+                                    <span class="text-gray-500">p. 210</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-1">
+                                    <span>Capítulo 7: Conflicto Armado</span>
+                                    <span class="text-gray-500">p. 245</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-1">
+                                    <span>Capítulo 8: Guatemala Moderna</span>
+                                    <span class="text-gray-500">p. 285</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sample Chapter -->
+                    <div class="bg-white rounded-lg p-6 shadow-sm">
+                        <h5 class="text-lg font-semibold text-gray-800 mb-4">📖 Capítulo 1: Época Precolombina (Muestra)</h5>
+                        <div class="prose max-w-none text-gray-700 leading-relaxed">
+                            <p class="mb-4">
+                                <strong>Los Primeros Habitantes</strong>
+                            </p>
+                            <p class="mb-4">
+                                Guatemala, tierra de eterna primavera, ha sido hogar de diversas civilizaciones durante más de tres milenios. Los primeros indicios de presencia humana en el territorio guatemalteco se remontan aproximadamente al año 12,000 a.C., cuando grupos de cazadores-recolectores nómadas comenzaron a establecerse en las tierras altas y las costas del Pacífico.
+                            </p>
+                            <p class="mb-4">
+                                La civilización maya, sin duda la más destacada de la región, floreció entre los años 2000 a.C. y 1500 d.C., dejando un legado arquitectónico, astronómico y cultural que perdura hasta nuestros días. Los mayas desarrollaron un complejo sistema de escritura jeroglífica, un calendario extraordinariamente preciso y monumentales centros ceremoniales como Tikal, El Mirador y Yaxhá.
+                            </p>
+                            <p class="mb-4">
+                                <strong>La Organización Social Maya</strong>
+                            </p>
+                            <p class="mb-4">
+                                La sociedad maya se organizaba en una estructura jerárquica bien definida. En la cúspide se encontraba el Halach Uinic o "hombre verdadero", quien ejercía el poder político y religioso supremo. Le seguían los nobles (almehenob), los sacerdotes, los guerreros, los artesanos especializados, los comerciantes y, en la base de la pirámide social, los campesinos y esclavos.
+                            </p>
+                            
+                            <!-- Blur effect for continuation -->
+                            <div class="relative">
+                                <p class="mb-4 filter blur-sm">
+                                    Los centros ceremoniales mayas no eran únicamente lugares de culto, sino verdaderas ciudades-estado que controlaban extensos territorios. Cada centro tenía su propio gobernante, sus dioses protectores y sus tradiciones particulares, aunque compartían elementos culturales fundamentales con otras ciudades mayas...
+                                </p>
+                                <p class="mb-4 filter blur-sm">
+                                    El sistema económico maya se basaba principalmente en la agricultura, siendo el maíz el cultivo fundamental, complementado con frijol, calabaza y chile. Los mayas también desarrollaron técnicas avanzadas de irrigación y terrazas para maximizar la producción agrícola en terrenos montañosos...
+                                </p>
+                                
+                                <!-- Overlay with purchase prompt -->
+                                <div class="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent flex items-end justify-center pb-4">
+                                    <div class="text-center bg-white p-4 rounded-lg shadow-lg border-2 border-yellow-500">
+                                        <p class="text-gray-800 font-semibold mb-2">¿Quieres seguir leyendo?</p>
+                                        <p class="text-sm text-gray-600 mb-4">Descubre más sobre la fascinante historia de Guatemala</p>
+                                        <button onclick="buyBookPayPal('Historia de Guatemala', 125, 'historia-guatemala')" class="bg-yellow-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-yellow-600 transition duration-300">
+                                            📚 Comprar Libro Completo
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Purchase Section -->
+                <div class="bg-white border-2 border-yellow-500 rounded-xl p-6">
+                    <h4 class="text-xl font-bold text-gray-800 mb-6 text-center">💳 Opciones de Pago</h4>
+                    
+                    <!-- Payment Methods Grid -->
+                    <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-4 mb-6">
+                        <!-- PayPal -->
+                        <button onclick="buyBookPayPal('Historia de Guatemala', 125, 'historia-guatemala')" class="bg-blue-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-blue-700 transition duration-300 flex items-center justify-center text-sm">
+                            <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c-.013.076-.026.175-.041.26-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81.394.45.67.99.837 1.607.013.076.026.175.041.26.983-5.05 4.349-6.797 8.647-6.797h2.19c.524 0 .968-.382 1.05-.9l1.12-7.106z"/>
+                            </svg>
+                            PayPal
+                        </button>
+
+                        <!-- Tigo Money -->
+                        <button onclick="buyBookTigoMoney('Historia de Guatemala', 125)" class="bg-blue-500 text-white py-3 px-4 rounded-lg font-semibold hover:bg-blue-600 transition duration-300 flex items-center justify-center text-sm">
+                            <span class="mr-2">📱</span>
+                            Tigo Money
+                        </button>
+
+                        <!-- Transferencia Bancaria -->
+                        <button onclick="buyBookTransfer('Historia de Guatemala', 125)" class="bg-green-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-green-700 transition duration-300 flex items-center justify-center text-sm">
+                            <span class="mr-2">🏦</span>
+                            Transferencia
+                        </button>
+
+                        <!-- Depósito Bancario -->
+                        <button onclick="buyBookDeposit('Historia de Guatemala', 125)" class="bg-purple-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-purple-700 transition duration-300 flex items-center justify-center text-sm">
+                            <span class="mr-2">💰</span>
+                            Depósito
+                        </button>
+                    </div>
+
+                    <!-- Price Display -->
+                    <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4 text-center">
+                        <div class="text-2xl font-bold text-gray-800">Q. 125.00</div>
+                        <div class="text-sm text-gray-600">≈ $16.03 USD (PayPal)</div>
+                    </div>
+
+
+
+                    <div class="text-xs text-gray-500 text-center space-y-1">
+                        <p>✅ Pago 100% seguro • 🚚 Entrega en San Pedro Carchá</p>
+                        <p>📦 Envío disponible a toda Guatemala • 📧 Confirmación por email</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-branding-cafe" class="modal">
+        <div class="modal-content w-full max-w-4xl mx-4">
+            <button class="close-modal" onclick="closeModal('branding-cafe')">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <div class="p-8">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div class="bg-gradient-to-br from-gray-700 to-gray-800 p-8 rounded-xl">
+                        <div class="text-center text-white">
+                            <div class="bg-white rounded-full w-24 h-24 flex items-center justify-center mb-6 mx-auto">
+                                <span class="text-gray-800 font-bold text-3xl">CF</span>
+                            </div>
+                            <div class="text-white font-bold text-2xl mb-3">Café Familiar</div>
+                            <div class="text-gray-300 text-lg mb-6">Identidad Visual Completa</div>
+                            <div class="grid grid-cols-2 gap-4 text-sm">
+                                <div class="bg-white bg-opacity-10 p-3 rounded">Logo Principal</div>
+                                <div class="bg-white bg-opacity-10 p-3 rounded">Tarjetas</div>
+                                <div class="bg-white bg-opacity-10 p-3 rounded">Menús</div>
+                                <div class="bg-white bg-opacity-10 p-3 rounded">Señalética</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-bold text-gray-800 mb-4">Branding Completo - Café Familiar</h3>
+                        <p class="text-gray-600 mb-6">Identidad visual completa para cafetería familiar. Incluye logo, aplicaciones en diferentes materiales y manual de marca para mantener consistencia.</p>
+                        
+                        <div class="space-y-4 mb-6">
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-gray-800 rounded-full mr-3"></div>
+                                <span class="text-gray-700">Diseño de logo principal y variaciones</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-gray-800 rounded-full mr-3"></div>
+                                <span class="text-gray-700">500 tarjetas de presentación</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-gray-800 rounded-full mr-3"></div>
+                                <span class="text-gray-700">Diseño de menú (2 versiones)</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-gray-800 rounded-full mr-3"></div>
+                                <span class="text-gray-700">Manual básico de marca</span>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-4 rounded-lg mb-6">
+                            <div class="text-2xl font-bold text-gray-800 mb-2">Q. 850.00</div>
+                            <div class="text-sm text-gray-600">Paquete completo de branding</div>
+                        </div>
+                        
+                        <button onclick="requestQuote('Branding Completo Café Familiar')" class="w-full bg-gray-800 text-white py-3 rounded-lg font-semibold hover:bg-gray-900 transition duration-300">
+                            Solicitar Cotización
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-tarjetas-corporativas" class="modal">
+        <div class="modal-content w-full max-w-4xl mx-4">
+            <button class="close-modal" onclick="closeModal('tarjetas-corporativas')">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <div class="p-8">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div class="bg-gradient-to-br from-cyan-600 to-cyan-700 p-8 rounded-xl flex items-center justify-center">
+                        <div class="bg-gray-900 rounded-lg p-8 shadow-xl max-w-sm">
+                            <div class="text-cyan-400 font-bold text-2xl mb-3">Ing. Roberto Paz</div>
+                            <div class="text-gray-300 text-lg mb-4">Construcciones RPC</div>
+                            <div class="text-sm text-gray-400 space-y-2">
+                                <div class="flex items-center"><span class="mr-2">📞</span> 4455 7788</div>
+                                <div class="flex items-center"><span class="mr-2">🏗️</span> Proyectos Residenciales</div>
+                                <div class="flex items-center"><span class="mr-2">📧</span> roberto@rpc.com</div>
+                                <div class="flex items-center"><span class="mr-2">📍</span> Alta Verapaz</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-bold text-gray-800 mb-4">Tarjetas Corporativas</h3>
+                        <p class="text-gray-600 mb-6">Diseño moderno y elegante para empresas constructoras y corporaciones. Acabado premium que refleja profesionalismo y confianza.</p>
+                        
+                        <div class="space-y-4 mb-6">
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-cyan-600 rounded-full mr-3"></div>
+                                <span class="text-gray-700">Papel especial negro mate</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-cyan-600 rounded-full mr-3"></div>
+                                <span class="text-gray-700">Impresión con foil dorado/plateado</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-cyan-600 rounded-full mr-3"></div>
+                                <span class="text-gray-700">Acabado premium UV</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-cyan-600 rounded-full mr-3"></div>
+                                <span class="text-gray-700">Diseño corporativo incluido</span>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-4 rounded-lg mb-6">
+                            <div class="text-2xl font-bold text-gray-800 mb-2">Q. 250.00</div>
+                            <div class="text-sm text-gray-600">Por 500 tarjetas premium</div>
+                        </div>
+                        
+                        <button onclick="requestQuote('Tarjetas Corporativas Premium')" class="w-full bg-cyan-600 text-white py-3 rounded-lg font-semibold hover:bg-cyan-700 transition duration-300">
+                            Solicitar Cotización
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-manual-tecnico" class="modal">
+        <div class="modal-content w-full max-w-6xl mx-4 max-h-[90vh] overflow-y-auto">
+            <button class="close-modal" onclick="closeModal('manual-tecnico')">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <div class="p-8">
+                <!-- Header Section -->
+                <div class="grid md:grid-cols-2 gap-8 items-center mb-8">
+                    <div class="bg-gradient-to-br from-yellow-600 to-yellow-700 p-8 rounded-xl flex items-center justify-center">
+                        <div class="bg-white rounded-lg p-8 shadow-xl w-48 h-64 flex flex-col">
+                            <div class="text-yellow-600 font-bold text-lg mb-3">Manual de Procedimientos</div>
+                            <div class="text-gray-600 text-sm mb-4">Empresa XYZ</div>
+                            <div class="bg-yellow-100 h-16 rounded mb-4 flex items-center justify-center">
+                                <div class="text-yellow-600 text-2xl">📋</div>
+                            </div>
+                            <div class="space-y-2 flex-1">
+                                <div class="bg-gray-100 h-2 rounded"></div>
+                                <div class="bg-gray-100 h-2 rounded"></div>
+                                <div class="bg-gray-100 h-2 rounded w-3/4"></div>
+                            </div>
+                            <div class="text-xs text-gray-500 mt-4">Manual Técnico</div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-bold text-gray-800 mb-4">Manual de Procedimientos</h3>
+                        <p class="text-gray-600 mb-6">Manual técnico profesional para empresas. Formato estándar con encuadernación resistente, ideal para uso frecuente en oficinas y talleres.</p>
+                        
+                        <div class="space-y-4 mb-6">
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-yellow-600 rounded-full mr-3"></div>
+                                <span class="text-gray-700">150 páginas en papel bond</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-yellow-600 rounded-full mr-3"></div>
+                                <span class="text-gray-700">Encuadernación espiral o térmica</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-yellow-600 rounded-full mr-3"></div>
+                                <span class="text-gray-700">Portada en cartulina plastificada</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-yellow-600 rounded-full mr-3"></div>
+                                <span class="text-gray-700">Impresión a blanco y negro</span>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-4 rounded-lg mb-6">
+                            <div class="text-2xl font-bold text-gray-800 mb-2">Q. 45.00</div>
+                            <div class="text-sm text-gray-600">Precio por manual</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Manual Preview Section -->
+                <div class="bg-gray-50 rounded-xl p-6 mb-8">
+                    <h4 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                        <span class="mr-3">👁️</span> Vista Previa del Manual
+                    </h4>
+                    
+                    <!-- Table of Contents -->
+                    <div class="bg-white rounded-lg p-6 mb-6 shadow-sm">
+                        <h5 class="text-lg font-semibold text-gray-800 mb-4">📋 Índice de Contenidos</h5>
+                        <div class="grid md:grid-cols-2 gap-4 text-sm">
+                            <div class="space-y-2">
+                                <div class="flex justify-between border-b border-gray-200 pb-1">
+                                    <span>1. Introducción y Objetivos</span>
+                                    <span class="text-gray-500">p. 3</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-1">
+                                    <span>2. Estructura Organizacional</span>
+                                    <span class="text-gray-500">p. 8</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-1">
+                                    <span>3. Procedimientos Administrativos</span>
+                                    <span class="text-gray-500">p. 15</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-1">
+                                    <span>4. Gestión de Recursos Humanos</span>
+                                    <span class="text-gray-500">p. 35</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-1">
+                                    <span>5. Procedimientos Financieros</span>
+                                    <span class="text-gray-500">p. 55</span>
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="flex justify-between border-b border-gray-200 pb-1">
+                                    <span>6. Control de Calidad</span>
+                                    <span class="text-gray-500">p. 75</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-1">
+                                    <span>7. Seguridad y Salud Ocupacional</span>
+                                    <span class="text-gray-500">p. 95</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-1">
+                                    <span>8. Procedimientos de Emergencia</span>
+                                    <span class="text-gray-500">p. 115</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-1">
+                                    <span>9. Anexos y Formularios</span>
+                                    <span class="text-gray-500">p. 135</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-1">
+                                    <span>10. Glosario de Términos</span>
+                                    <span class="text-gray-500">p. 145</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sample Chapter -->
+                    <div class="bg-white rounded-lg p-6 shadow-sm">
+                        <h5 class="text-lg font-semibold text-gray-800 mb-4">📖 Capítulo 1: Introducción y Objetivos (Muestra)</h5>
+                        <div class="prose max-w-none text-gray-700 leading-relaxed">
+                            <p class="mb-4">
+                                <strong>1.1 Propósito del Manual</strong>
+                            </p>
+                            <p class="mb-4">
+                                El presente Manual de Procedimientos tiene como finalidad establecer las normas, políticas y procedimientos que rigen las actividades operativas de la Empresa XYZ. Este documento constituye una herramienta fundamental para garantizar la eficiencia, calidad y consistencia en todos los procesos organizacionales.
+                            </p>
+                            <p class="mb-4">
+                                <strong>1.2 Alcance y Aplicación</strong>
+                            </p>
+                            <p class="mb-4">
+                                Este manual es de aplicación obligatoria para todo el personal de la empresa, independientemente de su nivel jerárquico o área de trabajo. Los procedimientos aquí establecidos deben ser seguidos rigurosamente para mantener los estándares de calidad y eficiencia que caracterizan a nuestra organización.
+                            </p>
+                            <p class="mb-4">
+                                <strong>1.3 Objetivos Específicos</strong>
+                            </p>
+                            <ul class="mb-4 list-disc list-inside space-y-2">
+                                <li>Estandarizar los procesos operativos de la empresa</li>
+                                <li>Facilitar la capacitación del personal nuevo</li>
+                                <li>Mejorar la comunicación interna</li>
+                                <li>Reducir errores y reprocesos</li>
+                            </ul>
+                            
+                            <!-- Blur effect for continuation -->
+                            <div class="relative">
+                                <p class="mb-4 filter blur-sm">
+                                    <strong>1.4 Estructura del Manual</strong>
+                                </p>
+                                <p class="mb-4 filter blur-sm">
+                                    El manual está organizado en diez capítulos principales, cada uno enfocado en un área específica de la operación empresarial. Cada procedimiento incluye: objetivo, alcance, responsables, descripción paso a paso, documentos relacionados y indicadores de control...
+                                </p>
+                                <p class="mb-4 filter blur-sm">
+                                    <strong>1.5 Actualización y Revisión</strong>
+                                </p>
+                                <p class="mb-4 filter blur-sm">
+                                    Este manual será revisado anualmente o cuando las circunstancias operativas lo requieran. Todas las modificaciones deben ser aprobadas por la Gerencia General y comunicadas oportunamente a todo el personal...
+                                </p>
+                                
+                                <!-- Overlay with purchase prompt -->
+                                <div class="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent flex items-end justify-center pb-4">
+                                    <div class="text-center bg-white p-4 rounded-lg shadow-lg border-2 border-yellow-600">
+                                        <p class="text-gray-800 font-semibold mb-2">¿Necesitas el manual completo?</p>
+                                        <p class="text-sm text-gray-600 mb-4">Accede a todos los procedimientos y formularios</p>
+                                        <button onclick="buyBookPayPal('Manual de Procedimientos', 45, 'manual-procedimientos')" class="bg-yellow-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-yellow-700 transition duration-300">
+                                            📋 Comprar Manual Completo
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Purchase Section -->
+                <div class="bg-white border-2 border-yellow-600 rounded-xl p-6">
+                    <h4 class="text-xl font-bold text-gray-800 mb-6 text-center">💳 Opciones de Pago</h4>
+                    
+                    <!-- Payment Methods Grid -->
+                    <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-4 mb-6">
+                        <!-- PayPal -->
+                        <button onclick="buyBookPayPal('Manual de Procedimientos', 45, 'manual-procedimientos')" class="bg-blue-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-blue-700 transition duration-300 flex items-center justify-center text-sm">
+                            <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c-.013.076-.026.175-.041.26-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81.394.45.67.99.837 1.607.013.076.026.175.041.26.983-5.05 4.349-6.797 8.647-6.797h2.19c.524 0 .968-.382 1.05-.9l1.12-7.106z"/>
+                            </svg>
+                            PayPal
+                        </button>
+
+                        <!-- Tigo Money -->
+                        <button onclick="buyBookTigoMoney('Manual de Procedimientos', 45)" class="bg-blue-500 text-white py-3 px-4 rounded-lg font-semibold hover:bg-blue-600 transition duration-300 flex items-center justify-center text-sm">
+                            <span class="mr-2">📱</span>
+                            Tigo Money
+                        </button>
+
+                        <!-- Transferencia Bancaria -->
+                        <button onclick="buyBookTransfer('Manual de Procedimientos', 45)" class="bg-green-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-green-700 transition duration-300 flex items-center justify-center text-sm">
+                            <span class="mr-2">🏦</span>
+                            Transferencia
+                        </button>
+
+                        <!-- Depósito Bancario -->
+                        <button onclick="buyBookDeposit('Manual de Procedimientos', 45)" class="bg-purple-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-purple-700 transition duration-300 flex items-center justify-center text-sm">
+                            <span class="mr-2">💰</span>
+                            Depósito
+                        </button>
+                    </div>
+
+                    <!-- Price Display -->
+                    <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4 text-center">
+                        <div class="text-2xl font-bold text-gray-800">Q. 45.00</div>
+                        <div class="text-sm text-gray-600">≈ $5.77 USD (PayPal)</div>
+                    </div>
+
+
+
+                    <div class="text-xs text-gray-500 text-center space-y-1">
+                        <p>✅ Pago 100% seguro • 🚚 Entrega en San Pedro Carchá</p>
+                        <p>📦 Envío disponible a toda Guatemala • 📧 Confirmación por email</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="relative">
+                            <img src="Logo.png" alt="VT Impresos Logo" class="h-20 w-auto rounded-full" >
+                        </div>
+                        <h4 class="text-xl font-bold">VT Impresos</h4>
+                    </div>
+                    <p class="text-gray-400">Servicios de impresión profesional en Alta Verapaz, Guatemala. Calidad y acompañamiento personalizado.</p>
+                </div>
+                
+                <div>
+                    <h5 class="font-semibold mb-4">Servicios</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Impresión Digital</li>
+                        <li>Tarjetas Profesionales</li>
+                        <li>Diseño Gráfico</li>
+                        <li>Impresión de Libros</li>
+                        <li>Acompañamiento Personalizado</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h5 class="font-semibold mb-4">Contacto</h5>
+                    <div class="space-y-2 text-gray-400 text-sm">
+                        <p>San Pedro Carchá, Alta Verapaz</p>
+                        <p>Celular: 5949 6565</p>
+                        <p>verapaztelevision@gmail.com</p>
+                        <p>Lun - Vie: 8:00 a.m. - 6:00 p.m.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 VT Impresos. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            
+            const nombre = document.getElementById('contactNombre').value;
+            const email = document.getElementById('contactEmail').value;
+            const telefono = document.getElementById('contactTelefono').value;
+            const servicio = document.getElementById('contactServicio').value;
+            const mensaje = document.getElementById('contactMensaje').value;
+            
+            // Show success message
+            alert(`¡Gracias ${nombre}! Hemos recibido tu solicitud de cotización para ${servicio}. Te contactaremos pronto al email ${email} o al teléfono ${telefono || 'proporcionado'}.`);
+            
+            // Reset form
+            event.target.reset();
+        }
+
+        function filterPortfolio(category) {
+            const items = document.querySelectorAll('.portfolio-item');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            // Update active button
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Filter items
+            items.forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'block';
+                    // Reset animation
+                    item.style.animation = 'none';
+                    setTimeout(() => {
+                        item.style.animation = 'portfolioReveal 0.6s ease-out forwards';
+                    }, 10);
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('shadow-lg');
+            } else {
+                header.classList.remove('shadow-lg');
+            }
+        });
+
+        // Modal functions
+        function openModal(modalId) {
+            const modal = document.getElementById('modal-' + modalId);
+            if (modal) {
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById('modal-' + modalId);
+            if (modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Close modal when clicking outside
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal')) {
+                const modalId = event.target.id.replace('modal-', '');
+                closeModal(modalId);
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const openModal = document.querySelector('.modal.show');
+                if (openModal) {
+                    const modalId = openModal.id.replace('modal-', '');
+                    closeModal(modalId);
+                }
+            }
+        });
+
+        // Buy book function
+        function buyBook(bookTitle, price) {
+            // Simulate purchase process
+            const confirmed = confirm(`¿Confirmas la compra de "${bookTitle}" por Q. ${price}.00?\n\nEste es un sitio de demostración. En un sitio real, esto te llevaría a un proceso de pago seguro.`);
+            
+            if (confirmed) {
+                alert(`¡Gracias por tu compra!\n\nLibro: ${bookTitle}\nPrecio: Q. ${price}.00\n\nTe contactaremos pronto para coordinar la entrega en San Pedro Carchá.`);
+                
+                // Close modal after purchase
+                const openModal = document.querySelector('.modal.show');
+                if (openModal) {
+                    const modalId = openModal.id.replace('modal-', '');
+                    closeModal(modalId);
+                }
+            }
+        }
+
+        // PayPal purchase function
+        function buyBookPayPal(bookTitle, price, itemId) {
+            // Convert Quetzales to USD (approximate rate: 1 USD = 7.8 GTQ)
+            const priceUSD = (price / 7.8).toFixed(2);
+            
+            // Show confirmation dialog
+            const confirmed = confirm(`¿Confirmas la compra de "${bookTitle}"?\n\nPrecio: Q. ${price}.00 (≈ $${priceUSD} USD)\n\nSerás redirigido a PayPal para completar el pago de forma segura.`);
+            
+            if (confirmed) {
+                // Create PayPal payment URL (this would normally be generated by your backend)
+                // For demonstration, we'll show what would happen
+                const paypalUrl = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=verapaztelevision@gmail.com&item_name=${encodeURIComponent(bookTitle + ' - VT Impresos')}&amount=${priceUSD}&currency_code=USD&return=https://vtimpresos.com/success&cancel_return=https://vtimpresos.com/cancel&notify_url=https://vtimpresos.com/ipn`;
+                
+                // Show loading message
+                alert(`Redirigiendo a PayPal...\n\nEn un sitio real, serías redirigido automáticamente a PayPal para completar tu pago de $${priceUSD} USD.\n\nDespués del pago exitoso, recibirás:\n• Confirmación por email\n• Instrucciones de entrega\n• Factura digital`);
+                
+                // In a real implementation, you would redirect to PayPal:
+                // window.open(paypalUrl, '_blank', 'noopener,noreferrer');
+                
+                // For demo purposes, simulate successful payment
+                setTimeout(() => {
+                    alert(`✅ ¡Pago simulado exitoso!\n\nLibro: ${bookTitle}\nMonto: $${priceUSD} USD (Q. ${price}.00)\n\nEn un sitio real:\n• Recibirías confirmación de PayPal\n• Te contactaríamos para la entrega\n• Tendrías acceso inmediato al contenido digital`);
+                    
+                    // Close modal after purchase
+                    const openModal = document.querySelector('.modal.show');
+                    if (openModal) {
+                        const modalId = openModal.id.replace('modal-', '');
+                        closeModal(modalId);
+                    }
+                }, 1000);
+            }
+        }
+
+        // Request quote function
+        function requestQuote(service) {
+            alert(`¡Perfecto!\n\nHemos recibido tu solicitud de cotización para: ${service}\n\nTe contactaremos pronto al 5949 6565 o puedes escribirnos a verapaztelevision@gmail.com\n\n¡Gracias por elegir VT Impresos!`);
+            
+            // Close modal after quote request
+            const openModal = document.querySelector('.modal.show');
+            if (openModal) {
+                const modalId = openModal.id.replace('modal-', '');
+                closeModal(modalId);
+            }
+        }
+
+        // Tigo Money payment function
+        function buyBookTigoMoney(bookTitle, price) {
+            const confirmed = confirm(`¿Confirmas el pago con Tigo Money?\n\nLibro: ${bookTitle}\nPrecio: Q. ${price}.00\n\nTe enviaremos las instrucciones de pago por WhatsApp.`);
+            
+            if (confirmed) {
+                alert(`✅ ¡Solicitud de pago recibida!\n\nLibro: ${bookTitle}\nMétodo: Tigo Money\nMonto: Q. ${price}.00\n\nInstrucciones:\n1. Te contactaremos al WhatsApp para enviarte el número Tigo Money\n2. Realiza la transferencia\n3. Envía captura del comprobante\n4. Coordinaremos la entrega\n\n📞 WhatsApp: 5949 6565`);
+                closeCurrentModal();
+            }
+        }
+
+        // Bank transfer payment function
+        function buyBookTransfer(bookTitle, price) {
+            const confirmed = confirm(`¿Confirmas el pago por transferencia bancaria?\n\nLibro: ${bookTitle}\nPrecio: Q. ${price}.00\n\nTe enviaremos los datos bancarios.`);
+            
+            if (confirmed) {
+                alert(`✅ ¡Solicitud de pago recibida!\n\nLibro: ${bookTitle}\nMétodo: Transferencia Bancaria\nMonto: Q. ${price}.00\n\nDatos bancarios:\n🏦 Banco: Banrural\n👤 Cuenta: VT Impresos\n💳 No. Cuenta: 1234567890\n\nInstrucciones:\n1. Realiza la transferencia\n2. Envía comprobante por WhatsApp: 5949 6565\n3. Coordinaremos la entrega\n\n📧 Email: verapaztelevision@gmail.com`);
+                closeCurrentModal();
+            }
+        }
+
+        // Bank deposit payment function
+        function buyBookDeposit(bookTitle, price) {
+            const confirmed = confirm(`¿Confirmas el pago por depósito bancario?\n\nLibro: ${bookTitle}\nPrecio: Q. ${price}.00\n\nTe proporcionaremos los datos para el depósito.`);
+            
+            if (confirmed) {
+                alert(`✅ ¡Solicitud de pago recibida!\n\nLibro: ${bookTitle}\nMétodo: Depósito Bancario\nMonto: Q. ${price}.00\n\nDatos para depósito:\n🏦 Banco Banrural\n👤 A nombre de: VT Impresos\n💳 Cuenta de Depósitos: 1234567890\n\nInstrucciones:\n1. Realiza el depósito en cualquier agencia\n2. Envía foto de la boleta por WhatsApp: 5949 6565\n3. Coordinaremos la entrega\n\n📍 Agencias disponibles en Cobán y San Pedro Carchá`);
+                closeCurrentModal();
+            }
+        }
+
+        // Cash on delivery payment function
+        function buyBookCOD(bookTitle, price) {
+            const confirmed = confirm(`¿Confirmas el pago contra entrega?\n\nLibro: ${bookTitle}\nPrecio: Q. ${price}.00 + Q. 15.00 (envío)\nTotal: Q. ${price + 15}.00\n\n¿Confirmas tu pedido?`);
+            
+            if (confirmed) {
+                const address = prompt(`📍 Por favor, proporciona tu dirección completa para la entrega:\n\n(Incluye zona, referencias y número de teléfono)`);
+                
+                if (address && address.trim()) {
+                    alert(`✅ ¡Pedido confirmado!\n\nLibro: ${bookTitle}\nMétodo: Pago Contra Entrega\nSubtotal: Q. ${price}.00\nEnvío: Q. 15.00\nTotal: Q. ${price + 15}.00\n\nDirección: ${address}\n\nTe contactaremos en las próximas 2 horas para confirmar la entrega.\n\n📞 WhatsApp: 5949 6565\n⏰ Entregas: Lun-Vie 8am-6pm`);
+                    closeCurrentModal();
+                } else {
+                    alert('❌ Dirección requerida para el envío. Inténtalo nuevamente.');
+                }
+            }
+        }
+
+        // Cash payment in store function
+        function buyBookCash(bookTitle, price) {
+            const confirmed = confirm(`¿Confirmas el pago en efectivo en nuestra tienda?\n\nLibro: ${bookTitle}\nPrecio: Q. ${price}.00\n\n¿Deseas reservar el libro?`);
+            
+            if (confirmed) {
+                const customerName = prompt(`📝 Por favor, proporciona tu nombre para la reserva:`);
+                
+                if (customerName && customerName.trim()) {
+                    alert(`✅ ¡Libro reservado!\n\nLibro: ${bookTitle}\nCliente: ${customerName}\nPrecio: Q. ${price}.00\nMétodo: Efectivo en tienda\n\n📍 Dirección:\nDiagonal 2 8-63 Zona 2\nBarrio San Pablo\nSan Pedro Carchá, Alta Verapaz\n\n⏰ Horarios:\nLunes a Viernes: 8:00 a.m. - 6:00 p.m.\n\n📞 Confirma tu visita: 5949 6565\n\n⚠️ Reserva válida por 7 días`);
+                    closeCurrentModal();
+                } else {
+                    alert('❌ Nombre requerido para la reserva. Inténtalo nuevamente.');
+                }
+            }
+        }
+
+        // Helper function to close current modal
+        function closeCurrentModal() {
+            const openModal = document.querySelector('.modal.show');
+            if (openModal) {
+                const modalId = openModal.id.replace('modal-', '');
+                closeModal(modalId);
+            }
+        }
+
+        // Carousel functionality
+        let currentSlide = 0;
+        const totalSlides = 3;
+
+        function showSlide(index) {
+            const items = document.querySelectorAll('.carousel-item');
+            const indicators = document.querySelectorAll('.carousel-indicator');
+            
+            // Hide all slides
+            items.forEach(item => item.classList.remove('active'));
+            indicators.forEach(indicator => {
+                indicator.classList.remove('active', 'bg-cyan-500');
+                indicator.classList.add('bg-gray-300');
+            });
+            
+            // Show current slide
+            if (items[index]) {
+                items[index].classList.add('active');
+                indicators[index].classList.remove('bg-gray-300');
+                indicators[index].classList.add('active', 'bg-cyan-500');
+            }
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        function previousSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            showSlide(currentSlide);
+        }
+
+        // Auto-advance carousel
+        setInterval(nextSlide, 5000);
+
+        // Add CSS for carousel items
+        const carouselStyle = document.createElement('style');
+        carouselStyle.textContent = `
+            .carousel-item {
+                display: none;
+            }
+            .carousel-item.active {
+                display: grid;
+            }
+        `;
+        document.head.appendChild(carouselStyle);
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98e291d6f6105a93',t:'MTc2MDM5NzY0OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
